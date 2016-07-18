@@ -1,0 +1,173 @@
+1.
+proposition: ice cream -> dishes
+a: false -> _
+b: ? -> tv
+c: ice cream -> ?
+d: _ -> dishes
+-> bob and charlie
+
+
+2.
+a. a || (b && c) == (a || b) && (a || c)
+-> foil: (a || b) && (a || c) == (a || b) && (a || c)
+-> true
+
+b. a && (b || c) == (a && b) || (a && c)
+-> foil: (a && b) || (a && c) == (a && b) || (a && c)
+-> true
+
+c. a -> b && c == (a -> b) && (a -> c)
+-> !a || b && c == (!a || b) && (!a || c)
+-> true
+
+d. a -> b || c == (a -> b) || (a -> c)
+-> !a || b || c == (!a || b) || (!a || c)
+-> true
+
+
+3.
+a. true
+b. true
+c. false
+
+
+4.
+a. \A x \E y : xy > 0 -> y > 0
+restated: \A x \E y : xy <= 0 || y > 0
+
+negation: \E x \A y : xy > 0 && y <= 0
+-> not all y <= 0
+-> negation is false
+-> true
+
+contraposition: y <= 0 -> xy <= 0
+-> y = 0
+-> true
+
+b. !\A x \E y : xy >= x^2
+negation: \A x \E y : xy >= x^2
+-> x = y -> x^2 >= x^2
+-> negation is true
+-> false
+
+c. \E y \A x : xy >= x^2
+-> y < 0, x > 0
+-> xy < 0 >= x^2 > 0
+-> false
+
+
+5. 
+a.
+  i. \A x : D(x) -> I(x)
+ ii. \A x : V(x) -> H(x)
+iii. \A x : C(x) -> !W(x)
+ iv. \A x : H(x) -> W(x)
+  v. \A x : I(x) -> C(x)
+ vi. \A x : P(x) -> V(x)
+
+b.
+  i. \A x : !I(x) -> !D(x)
+ ii. \A x : !H(x) -> !V(x)
+iii. \A x : W(x)  -> !C(x)
+ iv. \A x : !W(x) -> !H(x)
+  v. \A x : !C(x) -> !I(x)
+ vi. \A x : !V(x) -> !P(x)
+
+c. not a duck dynasty viewer
+
+
+6.
+a. z = (!a && !b && !c && !d) || (!a && !b && c && !d) || (a && !b && !c && !d) || (a && !b && c && !d)
+a b c d z
+---------
+0 0 0 0 1
+0 0 0 1 0
+0 0 1 1 0
+0 0 1 0 1
+0 1 0 0 0
+0 1 0 1 0
+0 1 1 1 0
+0 1 1 0 0
+1 1 0 0 0
+1 1 0 1 0
+1 1 1 1 0
+1 1 1 0 0
+1 0 0 0 1
+1 0 0 1 0
+1 0 1 1 0
+1 0 1 0 1
+
+b.
+           cd
+       00 01 11 10
+       -----------
+   00 | 1  0  0  1
+ab 01 | 0  0  0  0
+   11 | 0  0  0  0
+   10 | 1  0  0  1
+
+c. z = !b && !d
+
+d. z = (!a && !b && !c && !d) || (!a && !b && c && !d) || (a && !b && !c && !d) || (a && !b && c && !d)
+-> z = ((!a && !b) && (!c && !d || c && !d)) || ((a && !b) && (!c && !d || c && !d))
+-> z = ((!a && !b) && (!d && (!c && c))) || ((a && !b) && (!d && (!c || c)))
+-> z = ((!a && !b) && !d) || ((a && !b) && !d)
+-> z = (!a && !b && !d) || (a && !b && !d)
+-> z = !d && ((!a && !b || (a && !b))
+-> z = !d && (!b && (!a || a))
+-> z = !d && !b
+
+
+7.
+a. \A x y a in Z : !a|xy -> !a|x && !a|y
+-> a|x || a|y -> a|xy
+-> x = ka for some k in Z
+-> a|ka -> a|kay
+-> true, contraposition
+
+b. proved
+
+c. a|xy -> !a|x && !a|y
+!a|x && !a|y -> !a|xy
+a|xy -> a|x || a|y
+-> a|x || a|y -> !a|xy
+-> x = ka for some k in Z
+-> a|ka -> !a|kay
+-> false
+
+
+8.
+a. \A n in N : n is odd -> n^2 + 3n is even
+-> n = 2m + 1
+-> (2k + 1)^2 + 3(2k + 1)
+-> 4k^2 + 4k + 1 + 6k + 3
+-> 4k^2 + 10k + 4
+-> 2(2k^2 + 5k + 2)
+-> true, direct proof
+
+b. \A n in N : n^2 + 7n is even
+-> n(n + 7)
+-> either n or n + 7 must be even
+-> even * odd = even
+-> true, direct proof
+
+c. \A a b in R : a + b >= 10 -> a >= 7 || b >= 3
+-> a < 7 && a < 3 -> a + b < 10
+-> true, contraposition
+
+d. \A r in R : r is irrational -> r + 1 is irrational
+-> r + 1 is rational -> r is rational
+-> r + 1 = a / b for some a b in Z
+-> r = a / b - b / b = (a - b) / b
+-> true, contraposition
+
+e. \A n in N : 10n^2 > n!
+-> n = 6
+-> 10(36) > 720
+-> false, counterexample
+
+f. \A n in N : a^5 is odd -> a is odd
+-> \A n in N : a is even -> a^5 is even
+-> a^5 = (2b)^5
+-> 32b^5 = 2(16b^5)
+-> true, contraposition

@@ -1,0 +1,99 @@
+3. direct proof
+
+sanity check 1
+P(x,y) = x|y
+theorem: for any a,b,c in Z, if a|b and a|c, then a|(b + c)
+equivalent: \A a,b,c in Z (P(a,b) && P(a,c)) -> P(a,b + c)
+
+
+exercise 1
+
+theorem 2.2:
+let 0 < n < 1000 be an integer. if the sum of the digits of n is divisible by 9, then n is divisible by 9.
+
+given proof:
+n = 100a + 10b + c
+-> \E x in Z such that a + b + c = 9k
+-> 100a + 10b + c = 9x + 99a + 9b
+-> n = 9(x + 11a + b)
+-> n is divisible by 9
+
+general proof:
+n has k digits
+digits = a = [k..0]
+n = sum [ a[i] * 10^i | i <- [0..k] ]
+-> \E x in Z such that sum a = 9x
+-> sum a + [ a[i] * 10^i - 1 | i <- [0..k-1] ] = 9x + [ a[i] * 10^i - 1 | i <- [0..k-1] ]
+-> n = 9x + 9 * (a[0] + 11a[1] + ... + sum [ 10^i | i <- [0..k-1] ]a[k-1])
+-> n = 9(x + 1 + 11 + ...)
+
+
+exercise 2
+lemma 2.2:
+if a^2 is even, then a is even
+
+direct proof:
+-> a^2 + a = a(a + 1)
+-> a^2 + a = even * odd = even
+-> even + a = even
+-> a = even
+
+contraposition:
+if a is odd, then a^2 is odd
+
+-> a = 2k + 1
+-> a^2 = 4k^2 + 4k + 1
+-> a^2 = 2(2k^2 + 2k) + 1
+-> a^2 = even + 1
+-> a^2 = odd
+
+-> [ x * x | x <- [1,3,5,7,9] ] = [1,9,5,9,1]
+
+
+discussion 1b
+
+1a. \A x P(x) || Q(x) <=> (\A x P(x)) || (\A x Q(x))
+-> x <- {a, b} s.t. P(a) and !Q(a) and !P(b) and Q(b)
+-> true =/= false || false
+-> false
+
+1b. \A x P(x) && Q(x) <=> (\A x P(x)) && (\A x Q(x))
+-> (true && true) <=> true && true
+-> (false && true) = false <=> false && true = false
+-> (true && false) = false <=> true && false = false
+-> (false && false) <=> false && false
+-> true
+
+1c. \E x P(x) || Q(x) <=> (\E x P(x)) || (\E x Q(x))
+-> true
+
+1d. \E x P(x) && Q(x) <=> (\E x P(x)) && (\E x Q(x))
+-> x <- {a, b} s.t. P(a) and !Q(a) and !P(b) and Q(b)
+-> false =/= true && true
+-> false
+
+2. perfect square n <- Z n = m^2
+prove: \A n in Z(odd), k <- Z : n = 8k + 1
+-> m is odd
+-> (2x + 1)^2 = 8k + 1
+-> 4x^2 + 4x = 8k
+-> 4x(x + 1) = 8k
+-> x(x + 1) is even -> x(x + 1) = 2y
+-> 4(2y) = 8k
+-> y = k, y <- Z
+
+3. \A n in Z, n > 3 : 2^(1/n)
+contrary: \E n in Z+, n > 3 : 2^(1/n) = p / q
+-> 2^(1/n) * q = p
+-> 2q^n = p^n
+-> q^n + q^n = p^n
+-> contradicts fermat's last theorem
+
+4. n + 1 apples into n boxes -> at least 1 box contains at least 2 apples
+contraposition: all boxes contain at most 1 apple
+-> n * 1 =/= n + 1
+
+5. n >= 2 people at party -> at least 2 of them have the same number of friends at the party
+contrary: everyone has a different number of friends
+-> number of friends <- [0..n-1]
+-> 1 person has 0 friends -> contradiction

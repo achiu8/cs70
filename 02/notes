@@ -1,0 +1,153 @@
+theorem 3.5
+-> sum to k <= 2 - 1/k
+-> sum to k + 1/(k+1)^2 <= 2 - 1/k + 1/(k+1)^2
+-> sum to k+1 <= 2 - 1/k + 1/(k+1)^2 <= 2 - 1/(k+1)
+-> -1/k + 1/(k+1)^2 <= -1/(k+1)
+-> -(k+1)/k + 1/(k+1) <= -1
+-> -1 - 1/k + 1/(k+1) <= -1
+-> 1/(k+1) <= 1/k
+-> true
+
+practice problems
+1. P(n) = \A n in N : sum(n^2) = 1/6(n)(n+1)(2n+1)
+-> base case: n = 0 -> 0 = 1/6 * 0 * 1 * 2 = 0 = true
+-> induction hypothesis: P(k+1) is true assuming P(n) is true for 0 <= n <= k
+-> P(k) + (k+1)^2 = 1/6k(k+1)(2k+1) + (k+1)^2
+-> P(k+1) = 1/6k(k+1)(2k+1) + (k+1)^2 = 1/6(k+1)(k+2)(2k+3)
+-> k(k+1)(2k+1) + 6(k+1)^2 = (k+1)(k+2)(2k+3)
+-> (k+1)(k(2k+1) + 6(k+1)) = (k+1)(k+2)(2k+3)
+-> (k+1)(2k^2 + 7k + 6) = (k+1)(k+2)(2k+3)
+-> true
+
+2. P(n) = \A n in N, n >= 1 : 3^n > 2^n
+-> base case: n = 1 -> 3^1 > 2^1 = true
+-> induction hypothesis: P(k+1) is true assuming P(n) is true for 1 <= n <= k
+-> P(k) = 3^k > 2^k
+-> P(k+1) = 3^(k+1) > 2^(k+1)
+-> 3 * 3^k > 3 * 2^k > 2 * 2^k
+-> 3 > 2
+-> true
+
+3. P(n) = (1+x)^n >= 1 + nx
+-> base case: n = 0 -> (1+x)^0 >= 1 + 0x -> 1 >= 1 = true
+-> induction hypothesis: P(k+1) is true assuming P(n) is true for 0 <= n <= k
+-> P(k) = (1+x)^k >= 1 + kx
+-> P(k+1) = (1+x)^(k+1) >= 1 + (k+1)x
+-> (1 + kx)(1 + x) = 1 + (k+1)x
+-> 1 + (k+1)x + kx^2 = 1 + (k+1)x
+-> since k >= 0 and kx^2 >= 0 -> 1 + (k+1)x + kx^2 >= 1 + (k+1)x
+-> (1+x)^(k+1) >= (1+kx)(1+x) >= 1 + (k+1)x
+-> true
+
+4. P(n) = \A n in N, n > 1 -> n! < n^n
+-> base case: n = 2 -> 2! < 2^2 = true
+-> induction hypothesis: P(k+1) is true assuming P(n) is true for 2 <= n <= k
+-> P(k) = k! < k^k
+-> P(k+1) = (k+1)! < (k+1)^(k+1)
+-> (k+1)! = (k+1)k! < (k+1)k^k <= (k+1)^(k+1)
+-> k^k <= (k+1)^k
+-> k <= k + 1
+-> true
+
+5. P(n) = 3n - 4
+-> P(k) = 3n - k
+-> P(k+1) = 3(k+1) - 4 = 3k - 1 = P(k) + 3
+-> 3k - 1 = P(k-1) + 3 + 3
+-> 3k - 1 = P(k-2) + 3 + 3 + 3
+-> 3k - 1 = P(k-i) + 3(i+1)
+-> i = k - 2
+-> 3k - 1 = P(k-(k-2)) + 3(k-1)
+-> 3k - 1 = P(2) + 3k - 3
+-> 3k - 1 = 3k - 1 = 3(k+1) - 4 = 3k - 1
+-> true
+
+
+discussion 2a
+
+1. P(n) = \A n in N, n >= 1 -> 2^n + 3^n <= 5^n
+-> base case: n = 1 -> 2 + 3 <= 5 = true
+-> P(k) = 2^k + 3^k <= 5^k
+-> P(k+1) = 2^(k+1) + 3^(k+1) <= 5^(k+1) >= 5(2^k + 3^k)
+-> 2^(k+1) + 3^(k+1) <= 5(2^k + 3^k)
+-> 2(2^k) + 3(3^k) <= 5(2^k) + 5(3^k)
+-> true
+
+2. P(n) = |x1 + x2 + ... + xn| <= |x1| + |x2| + ... + |xn|
+-> base case: n = 2 -> |x1 + x2| <= |x1| + |x2|
+-> P(k) = |x1 + x2 + ... + xk| <= |x1| + |x2| + ... + |xk|
+-> P(k+1) = |x1 + x2 + ... + xk+1| <= |x1| + |x2| + ... + |xk+1|
+-> |x1 + x2 + ... + xk| + |xk+1| and |x1 + x2 + ... + xk| - xk+1 <= |x1| + |x2| + ... + |xk| + |xk+1|
+-> xk+1 and -xk+1 <= |xk+1|
+-> true
+
+3. P(n) = \A n in N, n > 0 : sum(n^2) = 1/6(n)(n+1)(2n+1)
+-> base case: n = 1 -> 1 = 1/6(1)(2)(3) = 1 = true
+-> P(k) = sum(k^2) = 1/6(k)(k+1)(2k+1)
+-> P(k+1) = sum(k^2) + (k+1)^2 = 1/6(k+1)(k+2)(2k+3)
+-> 1/6(k)(k+1)(2k+1) + (k+1)^2 = 1/6(k+1)(k+2)(2k+3)
+-> 1/6(k)(k+1)(2k+1) + 1/6(6(k+1)^2) = 1/6(k+1)(k+2)(2k+3)
+-> k(k+1)(2k+1) + 6(k+1)^2 = (k+1)(k+2)(2k+3)
+-> (k+1)(k(2k+1) + 6(k+1)) = (k+1)(k+2)(2k+3)
+-> (k+1)(2k^2 + 7k + 6) = (k+1)(k+2)(2k+3)
+-> true
+
+4. P(n) = \A n in N, n >= 1 : sum(1/(3n^(3/2))) <= 2 - 1/sqrt(n)
+-> base case: n = 1 -> 1/3 <= 2 - 1 = true
+-> P(k) = sum(1/(3k^(3/2))) <= 2 - 1/sqrt(k)
+-> P(k+1) = sum(1/(3(k+1)^(3/2))) <= 2 - 1/sqrt(k+1)
+-> P(k+1) = P(k) + 1/(3(k+1)^(3/2)) <= 2 - 1/sqrt(k+1)
+-> P(k+1) = 2 - 1/(k^(1/2)) + 1/(3(k+1)^(3/2)) <= 2 - 1/(k+1)^(1/2)
+-> P(k+1) = -1/(k^(1/2)) + 1/(3(k+1)^(3/2)) <= -1/(k+1)^(1/2)
+-> P(k+1) = 1/(3(k+1)^(3/2)) <= -1/(k+1)^(1/2) + 1/(k^(1/2))
+-> P(k+1) = 1/(3(k+1)^(3/2)) <= -1/(k+1)^(1/2) + 1/(k^(1/2))
+
+5. P(n) = \A n in N, n > 0 : F(3n) = 2x
+-> base case: n = 1 -> F(3) = 2(1) = true
+-> P(k) = F(3k) = F(3k-1) + F(3k-2) = 2F(3k-2) + F(3k-3) = 2x
+-> P(k+1) = F(3k+3) = F(3k+2) + F(3k+1) = 2F(3k+1) + F(3k)
+-> P(k+1) = F(3k+3) = 2F(3k+1) + 2x = 2(F(3k+1) + x)
+-> true
+
+
+discussion 2b
+
+1.
+a. no, 4 and C would rather be with each other than their given matches
+
+b.
+1
+2 B
+3 D
+4 C A
+
+1
+2 A B
+3 D
+4 C
+
+1
+2 A
+3 D B
+4 C
+
+1 B
+2 A
+3 D
+4 C
+
+c.
+1 A
+2 D
+3 C
+4 B
+
+2.
+a. true. if every woman had a proposal on the n-1th day, each could have at most 1 proposal, which she would accept.
+that would mean that the algorithm would have terminated then and not need to continue to the nth day.
+b. true. on every day > k, the woman would receive a proposal from at least the same man from day k.
+c. false. every man would need to be rejected n-1 times since he proposes to his least preferred woman last. if a man m
+is rejected by woman w, it means w prefers m' to m, which means m' gets rejected less than n-1 times and ends up with a
+woman that is not his least preferred.
+d. true. this can happen if each woman happens to be her least preferred man's msot preferred woman.
+e. true. if a woman received a proposal on day j from man m, she would received a proposal from at least man m on every
+day after j.
